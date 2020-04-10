@@ -1,24 +1,5 @@
-create table my_table (
-	id bigint unsigned not null auto_increment,
-	status tinyint unsigned not null default 2,
-	events int unsigned not null default 0,
-	latitude decimal(10, 8) null,
-	longitude decimal(11, 8) null,
-	name varchar(50) not null,
-	description varchar(120) not null default 'N/A',
-	bio text null,
-	birtday date null,
-	event_time time null,
-	created_at datetime not null,
-	primary key (id),
-	key status (status),
-	key birthday_time (birtday, event_time)
-)engine=innodb
-	default charset=utf8
-	default collate=utf8_unicode_ci;
 
-
-
+-- LAB-07 BY HAMZZA K
 
 --QUESTION #1
 ------------------------------------------------------------------
@@ -32,7 +13,8 @@ create table Employees (
 	jobID varchar(6),
 	primary key (employeeId),
 	foreign key (deptID) references Departments(deptID),
-	foreign key (jobID) references Jobs(jobID),
+	foreign key (jobID) references Jobs(jobID)
+	on delete cascade
 	key firstname (firstname)
 )engine=innodb
 	default charset=utf8
@@ -52,24 +34,12 @@ create table Departments (
 	deptName varchar(50) not null,
 	locationID bigint unsigned,
 	primary key (deptID),
-	foreign key (locationID) references Locations(locationID),
-	on delete cascade;
+	foreign key (locationID) references Locations(locationID)
+	on delete cascade
 	key deptName (deptName)
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
-
-------------------------------------------------------------------
-delimiter $$
-create trigger before_location_id_trigger
-	before delete on Locations
-	for each row
-	begin
-		delete from Departments where Departments.locationID=old.locationID;
-	end$$
-delimiter ;
-
-
 ------------------------------------------------------------------
 insert into Departments values (default, "CS", 4);
 insert into Departments values (default, "MS", 5);
@@ -115,31 +85,45 @@ insert into Jobs values ("MAN127", "Head", 400000.00);
 insert into Jobs values ("ENG128", "Junior", 25000.00);
 ------------------------------------------------------------------
 
+
 -- QUESTION #2
 
+------------------------------------------------------------------
 create table Student (
 	studentID bigint unsigned not null auto_increment,
 	firstname varchar(30) not null,
-	lastname varchar(20) null,
+	lastname varchar(20) null default 'N/A',
 	age int null,
 	courseID bigint unsigned,
 	primary key (studentID),
-	foreign key (courseID) references Course(courseID),
+	foreign key (courseID) references Course(courseID) on delete cascade,
 	key firstname (firstname)
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
+------------------------------------------------------------------
+insert into Student values (default, "hamzza", "khan", 22, 2);
+insert into Student values (default, "Senjougahara", "Chan", 21, 4);
+insert into Student values (default, "Mako", "Shita", 19, 1);
+insert into Student values (default, "Ararargi", "Kyomi", 25, 3);
+------------------------------------------------------------------
 
 create table Marks (
 	totalmarks bigint not null,
 	studentID bigint unsigned,
 	courseID bigint unsigned,
-	foreign key	(studentID) references Student(studentID),
-	foreign key (courseID) references Course(courseID)
+	foreign key	(studentID) references Student(studentID) on delete cascade,
+	foreign key (courseID) references Course(courseID) on delete cascade
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
-
+------------------------------------------------------------------
+insert into Marks values (99, 13, 1);
+insert into Marks values (80, 16, 2);
+insert into Marks values (95, 14, 3);
+insert into Marks values (90, 15, 4);
+insert into Marks values (75, 14, 7);
+------------------------------------------------------------------
 create table Course (
 	courseID bigint unsigned not null auto_increment,
 	coursename varchar(40) not null,
@@ -148,8 +132,16 @@ create table Course (
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
-
-
+------------------------------------------------------------------
+insert into Course values (default, "Automata");
+insert into Course values (default, "Software Engineering");
+insert into Course values (default, "Financial Accounting");
+insert into Course values (default, "Linear Algebra");
+insert into Course values (default, "Calculus");
+insert into Course values (default, "Freshman English");
+insert into Course values (default, "Pakistan Studies");
+insert into Course values (default, "Data Structures and Algorithms");
+------------------------------------------------------------------
 create table Employee_details (
 	empID bigint unsigned not null auto_increment,
 	emp_name varchar(30) not null,
@@ -157,14 +149,21 @@ create table Employee_details (
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
-
+------------------------------------------------------------------
+insert into Employee_details values (default, "hamzza");
+insert into Employee_details values (default, "Sono Tori");
+insert into Employee_details values (default, "Tashkani");
+------------------------------------------------------------------
 create table Salary (
 	empID bigint unsigned,
 	salary decimal(10, 2) not null,
-	primary key (salaryID)
 	foreign key (empID) references Employee_details(empID)
+	on delete cascade
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
-
-insert into Salary values (20000.00);
+------------------------------------------------------------------
+insert into Salary values (1, 15000.00);
+insert into Salary values (2, 25000.00);	
+insert into Salary values (3, 35000.00);
+------------------------------------------------------------------
