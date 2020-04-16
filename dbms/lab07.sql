@@ -35,7 +35,7 @@ create table Departments (
 	locationID bigint unsigned,
 	primary key (deptID),
 	foreign key (locationID) references Locations(locationID)
-	on delete cascade
+	on delete cascade,
 	key deptName (deptName)
 )engine=innodb
 	default charset=utf8
