@@ -155,15 +155,18 @@ insert into Employee_details values (default, "Sono Tori");
 insert into Employee_details values (default, "Tashkani");
 ------------------------------------------------------------------
 create table Salary (
-	empID bigint unsigned,
+	employeeId bigint unsigned,
 	salary decimal(10, 2) not null,
-	foreign key (empID) references Employee_details(empID)
+	foreign key (employeeId) references Employees(employeeId)
 	on delete cascade
 )engine=innodb
 	default charset=utf8
 	default collate=utf8_unicode_ci;
 ------------------------------------------------------------------
-insert into Salary values (1, 15000.00);
-insert into Salary values (2, 25000.00);	
-insert into Salary values (3, 35000.00);
+insert into Salary values (7, 15000.00);
+insert into Salary values (8, 25000.00);	
+insert into Salary values (9, 75000.00);
+insert into Salary values (10, 25000.00);
+insert into Salary values (11, 45000.00);
+insert into Salary values (12, 65000.00);	
 ------------------------------------------------------------------
