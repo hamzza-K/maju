@@ -1,0 +1,122 @@
+### Agile Model
+the agile model emphasizes rapid and flexible adaptation to changes of the process, product and environment. Therefore, ASP is not a single technique but a total technology based on coherent concept. The characterization of the ASP model is a follows:
+
+(1) Incremental and Evolutionary Process
+Agility means quick adpatations to changes in requirements and surrounding environments. In this, products are incrementally delivered over time. ASP model consists of a number of light-weight processes which are small and manageable units.
+
+(2) Modular and Lean Process
+The ASP model, consisting of light-weight processes, is more modular and leaner than conventional processes model.
+
+(3) Time-Based Process
+The structure and enaction of ASP is based on time. The enaction of ASP in iterative with fixed cycle-time. Therefore, large-volume developement can be divided into multiple releases so that they can be developed incrementally and concurrently in a predictive way.
+
+
+# An Incremental and Iterative Process
+Object-oriented developement comes into real life. Among several software process models for the object-oriented developement, we observe the following two common nature in the structure of the process models
+
+(1) Incremental Macro Process
+From macro-scopic point of view, the software process is incremental or spiral in the sense that functions are divided into sub-systems or a group of functions and incrementally developed in a series of releases.
+
+(2) Iterative Micro Process
+Within an increment, a micro life-cycle of the design and implementation is iterative until the sub-systems come to an acceptable level of functionality.
+
+#Steps in Agile Model:
+1- Planning
+2- Requirement Analysis
+3- Design
+4- Coding
+5- Unit Testing
+6- Acceptance Testing
+ 
+# Advantages of Agile Model:
+- Changes are incorporated even at a later stage.
+- Co-operation between business people and developers.
+- Frequent delivery of working software.
+- Customer satisfaction by quick delivery of product.
+
+# Disadvantage of Agile Model:
+- Lack of designing and documentation.
+- Can be easily deviated if the customer is not clear.
+- Difficulty in assessing the resources required in large projects at the start of SDLC. 
+
+# How Agile Model incorporate change:
+[+] Since agile approach works by breaking projects into short, iterative cycles, it is based on the assumption that circumstances *change* as a project proceeds. Hence, agile model incorporates changes even at a later stage.
+
+
+
+### Waterfall Model
+Waterfall model is a sequentail model that divides software developement into pre-defined phases. Each phase must be completed before the next phase can begin with no overlap between the phases. Each phase is designed for performance specific activity during SDLC phase.
+
+# Usage 
+Waterfall can be used when requirements are not changing frequently. Application is not complicated and the project is not huge. Clear requirements, available resources and stable technology and tools.
+
+# Steps in Waterfall Model:
+1- Requirement Analysis
+2- System Design
+3- Implementation
+4- System Testing
+5- System Deployement
+6- System Maintainance
+
+# Advantages of Waterfall Model:
+- Each phase must be completed before moving on to next.
+- Suited for small projects where requirements are well defined.
+- Quality assurance test must be performed before moving on to the next phase.
+- Succinct documentation is done at ecery phase of SDLC.
+- Any change in software is made during the process of developement.
+
+# Disadvantages of Waterfall Model:
+- Error can be fixed only during the phase.
+- Not for complex projects where requirements changes frequently.
+- Testing period comes late in developement process.
+- Documentation occupies a lot of the time of developers and testers.
+- Small changes or errors that arise in the completed software may cause problems.
+
+# How Waterfall Model incorporates change:
+[-] The model only incorporates the change during developement process. Any change that comes later in stage is not acceptable and only if necessary; the change is expensive and sometimes causes the end of the project.
+
+
+
+
+### Spiral Model
+Spiral model is a combination of waterfall model and iterative model. Each phase in spiral model begins with the design goal and ends with client reviewing the progress. 
+The developement team in Spiral model starts with a small set of requirement and goes through each developement phase for those set of requirements. 
+
+# Usage of Spiral Model:
+This model is most suitable for large projects and when the risk and costs evaluation is important. Releases are frequent and creation of prototype is frequent. When changes may occur any time and requirements are unclear and complex.
+
+# Steps in Spiral Model:
+1- Planning
+2- Risk Analysis
+3- Engineering
+4- Evaluation
+
+# Advantages of Spiral Model:
+- Additional functionality/changes can be done at a later stage.
+- Cost estimation becomes easy as the prototye building is done in small steps.
+- Continuous developement helps in risk management.
+- Developement is fast and features are added in systematic way.
+- There is always a space for customer feedback.
+
+# Disadvantages of Spiral Model:
+- Risk of not meeting the schedule or budget.
+- It works best for only large projects; demands risk assesment expertise.
+- Protocol needs to be followed strictly.
+- A lot of documentation.
+- For smaller projects, the cost may be too high.
+
+# How Spiral Model incorporates change:
+[+] Spiral model welcomes the change even at a later stage since there are steps involved. 
+
+
+
+
+
+
+
+
+
+
+
+##Note
+1- Increasing the size of software to be developed decreases productivity (characteristic volume economics) 

@@ -26,13 +26,13 @@ void *function (void * n)
     }
 }
 
-int main(int argc, char *argv)
+int main(int argc, char *argv[])
 {
    
-   int n;
 
-   printf("Enter a nunber: \n");
-   scanf("%d", &n);
+   printf("The argument is %s: \n", argv[1]);
+   int n = atoi(argv[1]);
+
 
    pthread_t t;
 
