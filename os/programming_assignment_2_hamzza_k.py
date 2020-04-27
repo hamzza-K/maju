@@ -1,10 +1,12 @@
 import threading
 import random
 import time
+import os
+
 
 class Reader_writer(object):
-	def __init__(self):
-		self.data = 0
+	def __init__(self, n):
+		self.n = n
 		self.readers = 0
 		self.writers = 0
 		self.mutex1 = threading.Lock()
@@ -15,8 +17,7 @@ class Reader_writer(object):
 
 
 	def reader(self):
-
-		print("Reader is acquiring lock..")
+		print(f"{self.n}:Reader is acquiring lock..")
 		time.sleep(1)
 		self.reading.acquire()
 		self.read_blocking.acquire()
@@ -27,17 +28,19 @@ class Reader_writer(object):
 		self.read_blocking.release()
 		self.reading.release()
 		self.mutex1.acquire()
+		prob = self.probability()
+		if prob != 0:
+			print(f"{self.n}:The reader did not read the data.")
+		else: 
+			print(f"{self.n}:The reader has now read the data..")
+			time.sleep(1)
 		self.readers = self.readers - 1
-		print("The reader has now read the data..")
-		print(f"The data is {self.data}")
-		time.sleep(1)
 		if self.readers == 0: self.write_blocking.release()
 		self.mutex1.release()
-		print("The reader is now releasing the lock..")
+		print(f"{self.n}:The reader is now releasing the lock..")
 
 	def writer(self):
-		"Writer of readers and writers algorithm"
-		print("The writer is now acquiring the lock..")
+		print(f"{self.n}:The writer is now acquiring the lock..")
 		time.sleep(1)
 		self.mutex2.acquire()
 		self.writers = self.writers + 1
@@ -46,25 +49,31 @@ class Reader_writer(object):
 		self.write_blocking.acquire()
 		self.write_blocking.release()
 		self.mutex2.acquire()
-		print("The writer has now written the data...")
-		self.data += 1
-		print(f"The data now is {self.data}")
-		time.sleep(1)
+		prob = self.probability()
+		if prob == 0:
+			print(f"{self.n}:The writer did not write the data.")
+		else:
+			print(f"{self.n}:The writer has now written the data...")
+			time.sleep(1)
 		self.writers = self.writers - 1
 		if self.writers == 0: self.read_blocking.release()
 		self.mutex2.release()
 
+	def probability(self):
+		x = random.randint(10, 100)
+		x %= 2
+		return x
 
 
 
 if __name__ == '__main__':
     for i in range(10):
-        n = random.randint(0, 100)
-        if(n >= 65):
-            Thread1 = threading.Thread(target = Reader_writer().reader())
+        x = random.randint(10000, 9999999)
+        if(x % 2 == 0):
+            Thread1 = threading.Thread(target=Reader_writer(x).reader())
             Thread1.start()
         else:
-            Thread2 = threading.Thread(target = Reader_writer().writer())
+            Thread2 = threading.Thread(target = Reader_writer(x).writer())
             Thread2.start()
 
 Thread1.join()
