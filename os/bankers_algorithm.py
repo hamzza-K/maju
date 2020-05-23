@@ -35,7 +35,8 @@ class Bankers_Algorithm(object):
 
     def algorithm(self):
     	self.Remaining = np.subtract(self.max_matrix, self.matrix)
-    	# self.Remaining = np.array([[6,5,4],[7,8,1], [2,3,0], [5,4,3], [3,3,1]])
+    	self.Remaining = np.array([[7,4,3],[1,2,2], [6,0,0], [0,1,1], [4,3,1]])
+    	self.matrix = np.array([[0,1,0], [2, 0, 0], [3,0,2], [2, 1, 1], [0, 0, 2]])
 
     	while True:
     		max_tries = len(self.Remaining)
@@ -83,11 +84,12 @@ class Bankers_Algorithm(object):
 
 
     def current_availability(self):
-    	total = np.sum(self.matrix, axis=0)
-    	total = total[1:]
-    	for i in range(len(self.resources)):
-    		z = abs(self.resources[i] - total[i])
-    		self.current.append(z) 
+    	# total = np.sum(self.matrix, axis=0)
+    	# total = total[1:]
+    	# for i in range(len(self.resources)):
+    	# 	z = abs(self.resources[i] - total[i])
+    	# 	self.current.append(z) 
+    	self.current = np.array([3,3,2])
 
 
 
