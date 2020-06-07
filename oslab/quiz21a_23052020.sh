@@ -13,4 +13,4 @@ if (($year >= 5)); then
 	salary=$((salary+bonus))
 fi
 
-echo "Net Salary is: $salary"
+zenity --info --text="Net salary is: $salary"
